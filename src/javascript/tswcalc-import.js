@@ -12,8 +12,37 @@ tswcalc.import = function() {
         tswcalc.summary.updateAllStats();
     };
 
+    var expendSlotId = function (slotName){
+      var repl = {
+        "w"  : "weapon",
+        "w2" : "weapon2",
+        "h"  : "head",
+        "r"  : "ring",
+        "n"  : "neck",
+        "w"  : "wrist",
+        "l"  : "luck",
+        "b"  : "waist",
+        "o"  : "occult",
+
+        // Classic compatibility
+        "weapon"  : "weapon",
+        "weapon2" : "weapon2",
+        "head"    : "head",
+        "ring"    : "ring",
+        "neck"    : "neck",
+        "wrist"   : "wrist",
+        "luck"    : "luck",
+        "waist"   : "waist",
+        "occult"  : "occult"
+      };
+
+      return repl[slotName];
+
+    };
+
     var updateSlot = function(slotId, values) {
-        var slotObj = tswcalc.slots[slotId];
+
+        var slotObj = tswcalc.slots[expendSlotId(slotId)];
         if(values[0] > 10){
             slotObj.ql('11.0');
         }

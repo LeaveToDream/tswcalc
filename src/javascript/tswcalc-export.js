@@ -69,18 +69,35 @@ tswcalc.export = function() {
         return url;
     };
 
+    var reduceSlotId = function (slotName){
+      var repl = {
+        "weapon"  : "w",
+        "weapon2" : "w2",
+        "head"    : "h",
+        "ring"    : "r",
+        "neck"    : "n",
+        "wrist"   : "w",
+        "luck"    : "l",
+        "waist"   : "b",
+        "occult"  : "o"
+      };
+
+      return repl[slotName];
+
+    }
+
     var createSlotUrl = function(slot, state) {
         var idOrWtype = state.itemId;
         if(slot.isWeapon()) {
             idOrWtype = state.wtype;
         }
-        var slotUrl = slot.id + '=' + state.ql + ',' + idOrWtype + ',' + state.glyph_ql + ',' + state.primary_glyph + ',' +
+        var slotUrl = reduceSlotId(slot.id) + '=' + state.ql + ',' + idOrWtype + ',' + state.glyph_ql + ',' + state.primary_glyph + ',' +
             state.secondary_glyph + ',' + state.primary_dist + ',' + state.secondary_dist;
 
         if(state.signet_id !== 0 && state.signet_id !== '999') {
             slotUrl += ',' + state.signet_quality + ',' + state.signet_id;
         }
-                
+
         return slotUrl;
     };
 

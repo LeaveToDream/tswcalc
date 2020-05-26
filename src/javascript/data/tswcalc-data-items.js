@@ -1816,7 +1816,7 @@ tswcalc.data.items = [
         id: '203',
         name: 'Blood of the Deep One King',
         ql: '10.9',
-        role: 'heal',
+        role: 'healer',
         slots: ['head'],
         signet: {
             name: 'Blood of the Deep One King',
@@ -1875,7 +1875,7 @@ tswcalc.data.items = [
         id: '207',
         name: 'Band of Dis',
         ql: '10.9',
-        role: 'heal',
+        role: 'healer',
         slots: ['ring'],
         signet: {
             name: 'Band of Dis',
@@ -1892,7 +1892,7 @@ tswcalc.data.items = [
         id: '208',
         name: 'Amulet of Yuggoth',
         ql: '10.9',
-        role: 'loadNpmTasks',
+        role: 'dps',
         slots: ['neck'],
         signet: {
             name: 'Amulet of Yuggoth',
@@ -1918,7 +1918,7 @@ tswcalc.data.items = [
         id: '210',
         name: 'Brace of the Ghoul King',
         ql: '10.9',
-        role: 'heal',
+        role: 'healer',
         slots: ['wrist'],
         signet: {
             name: 'Brace of the Ghoul King',

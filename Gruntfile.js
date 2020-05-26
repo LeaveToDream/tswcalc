@@ -204,8 +204,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-release');
 
   grunt.registerTask('build', ['dust', 'concat', 'replace:develop', 'copy:develop']);
-  grunt.registerTask('default', ['build', 'qunit']);
-  grunt.registerTask('test', ['default']);
+  grunt.registerTask('default', ['build', 'watch']);
+  grunt.registerTask('test', ['build', 'qunit']);
   grunt.registerTask('dist', ['dust', 'concat', 'uglify', 'cssmin', 'replace:develop', 'replace:dist', 'copy:develop', 'copy:dist', 'qunit']);
   grunt.registerTask('package', ['dist', 'compress']);
 };

@@ -24,17 +24,23 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
         slotObj.el.signetId.change(this.signetChange);
         slotObj.el.signetQuality.change(this.signetChange);
     };
-    
+
     this.addItemsToSelect = function() {
         var items = tswcalc.data.findItems(slot.group);
         if(slot.id_prefix != 'head'){
             items = items.concat(tswcalc.data.findItems(slot.id_prefix));
         }
-        
+
+        var prefix = {
+          "healer" : "✚ - ",
+          "tank"   : "⛊ - ",
+          "dps"    : "✖ - "
+        };
+
         items.forEach(function(item) {
             slotObj.el.itemId.append($('<option>', {
                 value: item.id,
-                text: item.name
+                text: prefix[item.role]+item.name
             }));
         });
     };
@@ -138,14 +144,14 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
         self.updateGlyphDistributionButtons();
         tswcalc.summary.updateAllStats();
     };
-    
+
     this.updateGlyphDistributionButtons = function() {
         if(slotObj.el.glyphQl.val() === "11.0") {
             this.updateGlyphDistributionButton(slotObj.el.btn.primary[1], false, 'top');
             this.updateGlyphDistributionButton(slotObj.el.btn.primary[3], false, 'top');
             this.updateGlyphDistributionButton(slotObj.el.btn.secondary[1], false, 'bottom');
             this.updateGlyphDistributionButton(slotObj.el.btn.secondary[3], false, 'bottom');
-            
+
             if(slotObj.primaryDist() == 1 || slotObj.primaryDist() == 3) {
                 slotObj.el.btn.primary[4].trigger('click');
                 slotObj.el.btn.secondary[0].trigger('click');
@@ -157,7 +163,7 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
             this.updateGlyphDistributionButton(slotObj.el.btn.secondary[3], true, 'bottom');
         }
     };
-    
+
     this.updateGlyphDistributionButton = function(button, enable, tooltipPlacement) {
         if(enable) {
             button.removeAttr('disabled');
@@ -215,7 +221,7 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
             slotObj.signetQuality(item.signet.quality);
             slotObj.el.signetId.attr('disabled', 'disabled');
             slotObj.el.signetQuality.attr('disabled', 'disabled');
-            
+
             slotObj.el.signetId.append($('<option>', {
                 value: 999,
                 text: item.signet.name,
